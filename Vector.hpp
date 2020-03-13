@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+
+using namespace std;
 
 template <class Tipo>
 class Vector {
@@ -13,4 +16,10 @@ class Vector {
     Tipo getZ() { return  coor_Z; }
     Vector operator+(Vector);
     Vector operator*(Vector);
+    //
+    string toString(){
+      string rtn="";
+      rtn = '[' + coor_X.toString() + ", " + coor_Y.toString() + ", " + coor_Z.toString() + ']';
+      return rtn;
+    };
 };

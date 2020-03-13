@@ -8,9 +8,10 @@ class Racional {
     int num, den;
     void simplificar();
   public:
+    Racional() {}
     Racional(int num, int den);
-    int getNum() { return num; }
-    int getDen() { return den; }
+    int getNum() { return num; };
+    int getDen() { return den; };
     string toString();
     Racional operator+(Racional operando);
     Racional operator*(Racional operando);

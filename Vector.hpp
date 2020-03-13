@@ -10,12 +10,27 @@ class Vector {
     Tipo coor_Y;
     Tipo coor_Z;
   public:
-    Vector(Tipo, Tipo, Tipo);
+    Vector(Tipo coor_X, Tipo coor_Y, Tipo coor_Z) {
+      this -> coor_X = coor_X;
+      this -> coor_Y = coor_Y;
+      this -> coor_Z = coor_Z;
+    }
     Tipo getX() { return  coor_X; }
     Tipo getY() { return  coor_Y; }
     Tipo getZ() { return  coor_Z; }
-    Vector operator+(Vector);
-    Vector operator*(Vector);
+    Vector<Tipo> operator*(Vector<Tipo> operando) {
+      Tipo nCorX = this -> coor_X * operando.getX();
+      Tipo nCorY = this -> coor_Y * operando.getY();
+      Tipo nCorZ = this -> coor_Z * operando.getZ();
+      return Vector(coor_X, coor_Y, coor_Z);
+    }
+    Vector<Tipo> operator+(Vector<Tipo> operando) {
+      Tipo nCorX = this -> coor_X + operando.getX();
+      Tipo nCorY = this -> coor_Y + operando.getY();
+      Tipo nCorZ = this -> coor_Z + operando.getZ();
+      return Vector(coor_X, coor_Y, coor_Z);
+    }
+
     //
     string toString(){
       string rtn="";

@@ -11,8 +11,8 @@ Racional::Racional(int num, int den) {
 void Racional::simplificar() {
   int x = 2;
   while (x <= den) {
-    if(den / x) {
-      if (num / x) {
+    if(den % x == 0) {
+      if (num % x == 0) {
         den /= x;
         num /= x;
       }

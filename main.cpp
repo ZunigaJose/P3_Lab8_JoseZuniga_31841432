@@ -107,7 +107,24 @@ void suma() {
       }
       racionales.push_back(racionales[op1] + racionales[op2]);
       cout << racionales[op1].toString() << " + " <<
-      racionales[op2].toString() << " = " << racionales[racionales.size() - 1].toString();
+      racionales[op2].toString() << " = " << racionales[racionales.size() - 1].toString() << endl;
+    break;
+    case 1:
+      lComplejos();
+      cin >> op1;
+      while (op1 < 0 || op1 > complejos.size()) {
+        cout << "Valores invalidos!!\nVualva a intentar:\a\n";
+        cin >> op1;
+      }
+      lComplejos();
+      cin >> op2;
+      while (op2 < 0 || op2 > complejos.size()) {
+        cout << "Valores invalidos!!\nVuelva a intentar:\a\n";
+        cin >> op2;
+      }
+      complejos.push_back(complejos[op1] + complejos[op2]);
+      cout << complejos[op1].toString() << " + " <<
+      complejos[op2].toString() << " = " << complejos[complejos.size() - 1].toString() << endl;
     break;
   }
 }

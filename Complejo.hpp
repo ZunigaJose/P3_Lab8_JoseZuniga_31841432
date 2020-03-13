@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 using namespace std;
 
@@ -8,5 +9,9 @@ class Complejo {
     int imaginario;
   public:
     Complejo(int, int);
-    
+    Complejo operator+(Complejo);
+    Complejo operator*(Complejo);
+    int getR() { return real; }
+    int getI() { return  imaginario; }
+    string toString();
 };

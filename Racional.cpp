@@ -35,3 +35,9 @@ string Racional::toString() {
   }
   return rtn;
 }
+
+Racional Racional::operator*(Racional operando) {
+  int numN = this -> num * operando.getNum();
+  int denN = this -> den * operando.getDen();
+  return Racional(num, den);
+}

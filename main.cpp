@@ -89,7 +89,7 @@ void agregar(){
   }
 }
 
-void operar() {
+void suma() {
   int op1, op2;
   switch (tipo()) {
     case 1:
@@ -102,9 +102,12 @@ void operar() {
       lRacional();
       cin >> op2;
       while (op2 < 0 || op2 > racionales.size()) {
-        cout << "Valores invalidos!!\nVualva a intentar:\a\n";
+        cout << "Valores invalidos!!\nVuelva a intentar:\a\n";
         cin >> op2;
       }
+      racionales.push_back(racionales[op1] + racionales[op2]);
+      cout << racionales[op1].toString() << " + " <<
+      racionales[op2].toString() << " = " << racionales[racionales.size() - 1].toString();
     break;
   }
 }
@@ -120,6 +123,9 @@ int main() {
       case 2:
         lComplejos();
         lRacional();
+      break;
+      case 3:
+        suma();
       break;
     }
   } while (op);

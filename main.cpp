@@ -12,7 +12,7 @@ vector<Vector<Complejo>> complejos;
 
 int menuP() {
   int op;
-  cout << "1. Ingresar vector\n2. Listar vectores\n3. Operar vectores: \n0. Salir";
+  cout << "1. Ingresar vector\n2. Listar vectores\n3. Operar vectores\n0. Salir: ";
   cin >> op;
   if (op < 0 || op > 3) {
     return menuP();
@@ -93,6 +93,10 @@ void suma() {
   int op1, op2;
   switch (tipo()) {
     case 1:
+      if(racionales.empty()) {
+        cout << "Racionales esta vacio y no se puede hacer!!!\n\a";
+        return;
+      }
       lRacional();
       cin >> op1;
       while (op1 < 0 || op1 > racionales.size()) {
@@ -109,7 +113,11 @@ void suma() {
       cout << racionales[op1].toString() << " + " <<
       racionales[op2].toString() << " = " << racionales[racionales.size() - 1].toString() << endl;
     break;
-    case 1:
+    case 2:
+      if(complejos.empty()) {
+        cout << "Complejos esta vacio y no se puede hacer!!!\n\a";
+        return;
+      }
       lComplejos();
       cin >> op1;
       while (op1 < 0 || op1 > complejos.size()) {
@@ -129,6 +137,76 @@ void suma() {
   }
 }
 
+void multi() {
+  int op1, op2;
+  switch (tipo()) {
+    case 1:
+    if(racionales.empty()) {
+      cout << "Racionales esta vacio y no se puede hacer!!!\n\a";
+      return;
+    }
+    lRacional();
+    cin >> op1;
+    while (op1 < 0 || op1 > racionales.size()) {
+      cout << "Valores invalidos!!\nVualva a intentar:\a\n";
+      cin >> op1;
+    }
+    lRacional();
+    cin >> op2;
+    while (op2 < 0 || op2 > racionales.size()) {
+      cout << "Valores invalidos!!\nVuelva a intentar:\a\n";
+      cin >> op2;
+    }
+    racionales.push_back(racionales[op1] * racionales[op2]);
+    cout << racionales[op1].toString() << " * " <<
+    racionales[op2].toString() << " = " << racionales[racionales.size() - 1].toString() << endl;
+    break;
+    case 2:
+    if(complejos.empty()) {
+      cout << "Complejos esta vacio y no se puede hacer!!!\n\a";
+      return;
+    }
+    lComplejos();
+    cin >> op1;
+    while (op1 < 0 || op1 > complejos.size()) {
+      cout << "Valores invalidos!!\nVualva a intentar:\a\n";
+      cin >> op1;
+    }
+    lComplejos();
+    cin >> op2;
+    while (op2 < 0 || op2 > complejos.size()) {
+      cout << "Valores invalidos!!\nVuelva a intentar:\a\n";
+      cin >> op2;
+    }
+    complejos.push_back(complejos[op1] * complejos[op2]);
+    cout << complejos[op1].toString() << " * " <<
+    complejos[op2].toString() << " = " << complejos[complejos.size() - 1].toString() << endl;
+    break;
+  }
+}
+
+int operacion() {
+  int op;
+  cout << "1. Suma\n2. Multiplicacion: ";
+  cin >> op;
+  if (op < 1 || op > 2) {
+    cout << "Entrada Invalida!!\nVuelva a Intentar!!\n";
+    return operacion();
+  }
+  return op;
+}
+
+void operar() {
+  switch(operacion()) {
+    case 1:
+      suma();
+    break;
+    case 2:
+      multi();
+    break;
+  }
+}
+
 int main() {
   int op;
   do {
@@ -142,7 +220,7 @@ int main() {
         lRacional();
       break;
       case 3:
-        suma();
+        operar();
       break;
     }
   } while (op);

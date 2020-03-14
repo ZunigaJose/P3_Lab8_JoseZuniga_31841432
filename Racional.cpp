@@ -10,14 +10,19 @@ Racional::Racional(int num, int den) {
 
 void Racional::simplificar() {
   int x = 2;
-  while (x <= den) {
-    if(den % x == 0) {
-      if (num % x == 0) {
-        den /= x;
-        num /= x;
+  if (num == den) {
+    num = 1;
+    den = 1;
+  } else {
+    while (x <= den) {
+      if (den % x == 0) {
+        if (num % x == 0) {
+          den /= x;
+          num /= x;
+        }
       }
+      x++;
     }
-    x++;
   }
 }
 
